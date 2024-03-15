@@ -1,24 +1,24 @@
 import os
+import sys
 import openai
 from github import Github
-from dotenv import load_dotenv
 
-load_dotenv()
+def main(args):
+    pr_number = args[2]
+    repository_name = args[1]
+    git_token = args[0]
+    openai_key = args[3]
+    model = args[4]
 
-GPT_MODEL = os.getenv('GPT_MODEL')
-openai.api_key = os.getenv('OPENAI_API_KEY')
-git = Github(os.getenv('GITHUB_TOKEN'))
-
-
-def main(pr_number):
-    pr = load_pr(pr_number)
+    pr = load_pr(pr_number, repository_name, git_token)
     prompt = generate_prompt(pr)
-    response = generate_response(prompt)
+    response = generate_response(model, openai_key, prompt)
     review = generate_review(pr, response)
     return review
 
-def load_pr(number_pr):
-    repository = git.get_repo('leandrofreitascadmus/calculateCPF')
+def load_pr(number_pr, repository_name, git_token):
+    git = Github(git_token)
+    repository = git.get_repo(repository_name)
     pr = repository.get_pull(number_pr)
     return pr
 
@@ -38,11 +38,12 @@ def generate_prompt(pr):
 
     return prompt
 
-def generate_response(prompt):
+def generate_response(gpt_model, openai_key, prompt):
+    openai.api_key = os.getenv(openai_key)
     response = openai.chat.completions.create(
-        model=GPT_MODEL,
+        model=gpt_model,
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
+            # {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt},
         ]
     )
@@ -52,4 +53,4 @@ def generate_response(prompt):
 def generate_review(pr, response):
     pr.create_review(body=response, event='COMMENT')
 
-main(1)
+main(sys.arg)
