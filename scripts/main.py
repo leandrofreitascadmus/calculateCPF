@@ -4,17 +4,18 @@ import openai
 from github import Github
 
 def main(args):
+    print(args)
     pr_number = args[6]
     repository_name = args[4]
     git_token = args[2]
     openai_key = args[8]
-    model = args[10]
+    model = args[9]
 
-    pr = load_pr(pr_number, repository_name, git_token)
-    prompt = generate_prompt(pr)
-    response = generate_response(model, openai_key, prompt)
-    review = generate_review(pr, response)
-    return review
+    # pr = load_pr(pr_number, repository_name, git_token)
+    # prompt = generate_prompt(pr)
+    # response = generate_response(model, openai_key, prompt)
+    # review = generate_review(pr, response)
+    # return review
 
 def load_pr(number_pr, repository_name, git_token):
     git = Github(git_token)
