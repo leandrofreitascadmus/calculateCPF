@@ -53,4 +53,4 @@ def generate_response(gpt_model, openai_key, prompt):
 def generate_review(pr, response):
     pr.create_review(body=response, event='COMMENT')
 
-main(sys.arg)
+main(sys.argv)
