@@ -12,14 +12,14 @@ def main(args):
     openai_key = args[8]
     model = args[10]
 
-    pr = load_pr(pr_number, repository_name, git_token)
+    pr = load_pr(int(pr_number), repository_name, git_token)
     prompt = generate_prompt(pr)
     response = generate_response(model, openai_key, prompt)
     review = generate_review(pr, response)
     return review
 
 def load_pr(number_pr, repository_name, git_token):
-    git = Github('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')
+    git = Github(git_token)
     repository = git.get_repo(repository_name)
     pr = repository.get_pull(number_pr)
     return pr
@@ -41,9 +41,9 @@ def generate_prompt(pr):
     return prompt
 
 def generate_response(gpt_model, openai_key, prompt):
-    openai.api_key = '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'
+    openai.api_key = openai_key
     response = openai.chat.completions.create(
-        model='gpt-4',
+        model=gpt_model,
         messages=[
             # {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt},
