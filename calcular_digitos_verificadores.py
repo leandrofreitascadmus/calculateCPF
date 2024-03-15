@@ -23,4 +23,4 @@ resultado = calcula_digitos_verificadores(cpf_base_input)
 print(f"Os dois últimos dígitos do CPF são: {resultado}")
 
 
-#teste
+#teste teste
