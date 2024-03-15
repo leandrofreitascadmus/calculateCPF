@@ -4,11 +4,11 @@ import openai
 from github import Github
 
 def main(args):
-    pr_number = args[2]
-    repository_name = args[1]
-    git_token = args[0]
-    openai_key = args[3]
-    model = args[4]
+    pr_number = args[6]
+    repository_name = args[4]
+    git_token = args[2]
+    openai_key = args[8]
+    model = args[10]
 
     pr = load_pr(pr_number, repository_name, git_token)
     prompt = generate_prompt(pr)
