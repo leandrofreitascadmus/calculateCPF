@@ -36,6 +36,13 @@ def generate_prompt(pr):
         - A revisão tem que manter o idioma português do Brasil
         - A revisão tem que manter o formato markdown
         - Em caso de problemas no código, listar no comentário qual é o problema em formato code
+        - Verificar a indentação do código
+        - Verificar se foram aplicadas as melhores praticas
+        - Verificar se existem erros no código
+        - Analisar se existem testes unitários e caso não exista fazer recomendação para que existam
+        - Analisar padrão de variáveis e funções
+        - Analisar se a alteração proposta não fere a arquitetura do projeto
+        - Indicar caso exista possibilidade da alteração proposta afetar outros pontos do projeto
     '''
 
     return prompt
