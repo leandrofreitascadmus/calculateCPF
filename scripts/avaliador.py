@@ -32,19 +32,37 @@ def generate_prompt(pr):
 
     prompt = f'''
     Faça a revisão do PR: Titulo: {pr_title} Descrição: {pr_body} Diff: {diffs}
-    Regras para revisão:
-        - A revisão tem que manter o idioma português do Brasil
-        - A revisão tem que manter o formato markdown
-        - Em caso de problemas no código, listar no comentário qual é o problema em formato code
-        - Verificar a indentação do código
-        - Verificar se foram aplicadas as melhores praticas
-        - Verificar se existem erros no código
-        - Analisar se existem testes unitários e caso não exista fazer recomendação para que existam
-        - Analisar padrão de variáveis e funções
-        - Analisar se a alteração proposta não fere a arquitetura do projeto
-        - Indicar caso exista possibilidade da alteração proposta afetar outros pontos do projeto
-        - Indicar se a alteração proposta é necessária para o projeto funcionar
-        - Mostre possíveis melhoria no código em formato code
+    Regras para Revisão de Código:
+        - Idioma:
+            A revisão deve ser realizada em português do Brasil.
+        - Formato:
+            Manter o formato Markdown durante a revisão.
+        - Código:
+            Em caso de problemas no código, indicar o problema utilizando o formato de código (code).
+            Verificar a indentação do código para garantir legibilidade.
+            Assegurar que as melhores práticas foram aplicadas.
+            Identificar e corrigir possíveis erros no código.
+        - Testes Unitários:
+            Analisar a presença de testes unitários. Caso não existam, recomendar a inclusão para garantir a robustez do código.
+        - Padrões de Codificação:
+            Revisar o padrão de nomenclatura de variáveis e funções para garantir clareza e consistência.
+        - Arquitetura do Projeto:
+            Avaliar se as alterações propostas estão alinhadas com a arquitetura do projeto.
+            Indicar se existem possibilidades de as alterações afetarem outros componentes do projeto.
+        - Necessidade da Alteração:
+            Esclarecer se a alteração proposta é essencial para o funcionamento do projeto.
+        - Melhorias:
+            Sugerir melhorias no código utilizando princípios de Clean Code para aumentar a manutenibilidade e a clareza.
+        - Documentação e Comentários:
+            Verificar se o código está adequadamente documentado, incluindo comentários explicativos quando necessário para facilitar o entendimento.
+        - Consistência com o Design/UI:
+            Se aplicável, avaliar se as mudanças estão em conformidade com os designs ou interfaces de usuário propostos, incluindo a aderência a guias de estilo.
+        - Performance:
+            Avaliar o impacto das mudanças na performance do sistema. Recomendar otimizações caso identifique potenciais gargalos.
+        - Segurança:
+            Analisar o código quanto a possíveis vulnerabilidades de segurança e recomendar práticas de codificação segura.
+        - Uso de Bibliotecas e Dependências:
+            Avaliar o uso de novas bibliotecas ou dependências, considerando licenças, segurança, manutenção e impacto no tamanho do projeto.
     '''
 
     return prompt
