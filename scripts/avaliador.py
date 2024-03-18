@@ -51,6 +51,7 @@ def generate_prompt(pr):
             Indicar se existem possibilidades de as alterações afetarem outros componentes do projeto.
         - Necessidade da Alteração:
             Esclarecer se a alteração proposta é essencial para o funcionamento do projeto.
+            Demonstre a possível alteração em formado code
         - Melhorias:
             Sugerir melhorias no código utilizando princípios de Clean Code para aumentar a manutenibilidade e a clareza.
         - Documentação e Comentários:
