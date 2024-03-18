@@ -24,9 +24,9 @@ def verifica_cpf(cpf):
     return cpf_base + calcula_digitos_verificadores(cpf_base) == cpf
 
 # Exemplo de uso
-cpf_base_input = input("Digite os nove primeiros dígitos do CPF: ")
+cpf_base_user_input = input("Digite os nove primeiros dígitos do CPF: ")
 
-resultado = verifica_cpf(cpf_base_input)
+resultado = verifica_cpf(cpf_base_user_input)
 print(f"Os dois últimos dígitos do CPF são: {resultado}")
 
 #teste
