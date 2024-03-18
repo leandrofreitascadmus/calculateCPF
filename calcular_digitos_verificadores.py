@@ -3,23 +3,28 @@ def calcula_digitos_verificadores(cpf_base):
     if len(cpf_base) != 9 or not cpf_base.isdigit():
         return "CPF base inválido"
 
-    # Calcula o primeiro dígito verificador
-    soma = sum(int(cpf_base[i]) * (10 - i) for i in range(9))
-    resto = (soma * 10) % 11
-    digito1 = 0 if resto == 10 or resto == 11 else resto
+    # Calcula o primeiro e segundo dígito verificador
+    dvs = []
+    for n in range(10, 12):
+        soma = sum([int(cpf_base[i])*(n-i) for i in range(len(cpf_base))])
+        soma %= 11
+        dv = 0 if soma < 2 else 11 - soma
+        dvs.append(str(dv))
+        cpf_base += str(dv)
 
-    # Calcula o segundo dígito verificador
-    soma = sum(int(cpf_base[i]) * (11 - i) for i in range(9))
-    soma += digito1 * 2
-    resto = (soma * 10) % 11
-    digito2 = 0 if resto == 10 or resto == 11 else resto
+    return "".join(dvs)
 
-    return f"{digito1}{digito2}"
+def verifica_cpf(cpf):
+    cpf_base = cpf[:9]
+    cpf_dv = cpf[-2:]
+
+    # verifica se digitos verificadores são iguais aos calculados
+    return cpf_base + calcula_digitos_verificadores(cpf_base) == cpf
 
 # Exemplo de uso
 cpf_base_input = input("Digite os nove primeiros dígitos do CPF: ")
 
-resultado = calcula_digitos_verificadores(cpf_base_input)
+resultado = verifica_cpf(cpf_base_input)
 print(f"Os dois últimos dígitos do CPF são: {resultado}")
 
 
