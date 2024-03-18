@@ -32,6 +32,7 @@ def generate_prompt(pr):
 
     prompt = f'''
     Faça a revisão do PR: Titulo: {pr_title} Descrição: {pr_body} Diff: {diffs}
+    Em caso de melhorias, problemas no código, nomenclatura de váriaveis e funções, sugerir melhorias em formato code.
     Regras para Revisão de Código:
         - Idioma:
             A revisão deve ser realizada em português do Brasil.
