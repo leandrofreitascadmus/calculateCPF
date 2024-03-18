@@ -26,5 +26,3 @@ cpf_base_input = input("Digite os nove primeiros dígitos do CPF: ")
 
 resultado = verifica_cpf(cpf_base_input)
 print(f"Os dois últimos dígitos do CPF são: {resultado}")
-
-
