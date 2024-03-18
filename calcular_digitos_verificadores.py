@@ -15,6 +15,8 @@ def calcula_digitos_verificadores(cpf_base):
     return "".join(dvs)
 
 def verifica_cpf(cpf):
+    if len(cpf) != 11 or not cpf.isdigit():
+        return "CPF inválido"
     cpf_base = cpf[:9]
     cpf_dv = cpf[-2:]
 
