@@ -43,6 +43,8 @@ def generate_prompt(pr):
         - Analisar padrão de variáveis e funções
         - Analisar se a alteração proposta não fere a arquitetura do projeto
         - Indicar caso exista possibilidade da alteração proposta afetar outros pontos do projeto
+        - Indicar se a alteração proposta é necessária para o projeto funcionar
+        - Mostre possíveis melhoria no código em formato code
     '''
 
     return prompt
